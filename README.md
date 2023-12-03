@@ -1,12 +1,3 @@
-<div align="center">
-  <img width="200" height="200" src="https://webpack.js.org/assets/icon-square-big.svg">
-  <h1>Webpack work template</h1>
-  <p>
-    Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
-  </p>
-  <p>Author: <a href="https://github.com/vedees/" target="_blank">Vedees</a> | <a href="https://www.youtube.com/playlist?list=PLkCrmfIT6LBQWN02hNj6r1daz7965GxsV" target="_blank">Youtube guide (ru)</a></p>
-</div>
-
 ## Features:
 
 - separated configs for `dev` and `prod`
@@ -17,33 +8,20 @@
 - the best optimization for your production
 - easy webpack and babel customization
 
-Everybody knows that developing runs on coffee! Thanks for your support!
-
-[![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
-
 ## Build Setup:
 
 ```bash
 # Download repository:
 git clone https://github.com/vedees/webpack-template webpack-template
 
-# Go to the app:
-cd webpack-template
-
 # Install dependencies:
 # npm install
-# or:
-yarn
 
 # Server with hot reload at http://localhost:8084/
 # npm run start
-# or:
-yarn start
 
 # Output will be at dist/ folder
 # npm run build
-# or:
-yarn build
 ```
 
 ## Project Structure:
@@ -54,32 +32,92 @@ yarn build
 - `src/shared/img` - images folder (! for html calls use correct path: `static/img/some.jpg`)
 - `src/shared/misc` - misc files (i.g. favicon, sitemap, etc.)
 - `src/index.ts` - main app entity
+- `src/pug` - PUG files
 
 Configs:
 
 - `/babel-defines.js` - config for babel
-- `/webpack/webpack-defines.js` - config for webpack
+- `/webpack/webpack-pages.js` - config for html pages
+- `/webpack/webpack-defines.js` - config for entire webpack
 
 Main entry point:
 
 - `src/app/index.ts` - core entry point
 
-## Config:
+## Defines:
+
+Core webpack config from `/webpack/webpack-defines.js`:
 
 ```js
 const PATHS = {
-  // path to the Src dir
+  // path to the src dir
   src: path.join(__dirname, '../src'),
-  // path to the Output dir
+  // path to the output dir
   dist: path.join(__dirname, '../dist'),
-  // path to your html files
+  // path to the public files (html files)
   public: path.join(__dirname, '../public'),
 
-  // Path to Output sub dir (js, css, fonts, etc.)
+  // path to output sub dir (js, css, fonts, etc.)
   assets: 'assets/',
-  // Path to Output sub dir (img, icons, etc.)
+  // path to output sub dir (img, icons, etc.)
   static: 'static/'
 }
+```
+
+## Pages config:
+
+Pages config from `/webpack/webpack-pages.js`:
+
+```js
+const pages = [
+  {
+    // page title
+    title: 'Home page',
+    // template name `public/index.html(pug)`
+    template: 'index.pug',
+    // output filename `dist/index.html(pug)`
+    filename: 'index.pug',
+
+    // other options can be here
+  },
+  {
+    title: 'About page',
+    template: 'about.pug',
+    filename: 'about.pug',
+  }
+]
+```
+
+You can pass a hash of configuration options to html-webpack-plugin.
+
+Allowed values are as follows:  https://github.com/jantimon/html-webpack-plugin#options
+
+## Manual pages setup:
+
+In case if you don't want to use Pages config:
+
+1. Create another html file in `./public`
+2. Go to `./webpack/webpack.common.js`
+3. Add new page to the config:
+
+```js
+    // Automatical generation HTML
+
+    ...pages.map(
+      page =>
+        new HtmlWebpackPlugin({
+          title: page.title,
+          template: defines.public + '/' + page.template,
+          filename: page.filename,
+          // default:
+         favicon: defines.src + '/shared/misc/favicon.ico'
+        }))
+
+    // Automatical generation PUG to HTML
+    ...PAGES.map(page => new HtmlWebpackPlugin({
+      template: `${PAGES_DIR}/${page}`,
+      filename: `./${page.replace(/\.pug/,'.html')}`
+    })),
 ```
 
 ## Import libs example:
@@ -112,27 +150,54 @@ Import libs to `src/app/index.scss`:
 @import '../../node_modules/flickity/dist/flickity.css';
 ```
 
-## HTML dir folder:
+## React example:
 
-1. Create another html file in `./public`
-2. Go to `./webpack/webpack.common.js`
-3. Add new page to the config:
+Here's an example with React + i18n Provider.
 
-```js
-    // index page:
-    new HtmlWebpackPlugin({
-      title: 'My app',
-      favicon: defines.src + '/shared/misc/favicon.ico',
-      template: defines.public + '/index.html', // public/index.html page
-      filename: 'index.html' // output file
-    }),
-    // another page:
-    new HtmlWebpackPlugin({
-      title: 'My app',
-      favicon: defines.src + '/shared/misc/favicon.ico',
-      template: defines.public + '/another.html', // public/another.html page
-      filename: 'another.html' // output file
-    }),
+Install react:
+
+```bash
+yarn add react react-dom
+```
+
+Create div with id `app` in `public/index.html`:
+
+```html
+<div id="app"></div>
+```
+
+Init the app in `src/app/index.ts`:
+
+```tsx
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+
+// app styles
+import './index.scss'
+
+// local providers:
+import { I18nProvider } from './providers/I18nProvider'
+
+const container = document.getElementById('app') as HTMLElement
+const root = createRoot(container)
+
+root.render(
+  <React.StrictMode>
+    <I18nProvider>...</I18nProvider>
+  </React.StrictMode>
+)
+```
+
+File `src/app/providers/I18nProvider.tsx`:
+
+```tsx
+import React, { FC, PropsWithChildren } from 'react'
+
+export const I18nProvider: FC<PropsWithChildren> = ({ children }) => {
+  // ...
+
+  return <I18n locale={detectedLocale}>{children}</I18n>
+}
 ```
 
 ## Vue example:
@@ -198,56 +263,6 @@ components: {
 }
 ```
 
-## React example:
-
-Here's an example with React + i18n Provider.
-
-Install react:
-
-```bash
-yarn add react react-dom
-```
-
-Create div with id `app` in `public/index.html`:
-
-```html
-<div id="app"></div>
-```
-
-Init the app in `src/app/index.ts`:
-
-```tsx
-import React from 'react'
-import { createRoot } from 'react-dom/client'
-
-// app styles
-import './index.scss'
-
-// local providers:
-import { I18nProvider } from './providers/I18nProvider'
-
-const container = document.getElementById('app') as HTMLElement
-const root = createRoot(container)
-
-root.render(
-  <React.StrictMode>
-    <I18nProvider>...</I18nProvider>
-  </React.StrictMode>
-)
-```
-
-File `src/app/providers/I18nProvider.tsx`:
-
-```tsx
-import React, { FC, PropsWithChildren } from 'react'
-
-export const I18nProvider: FC<PropsWithChildren> = ({ children }) => {
-  // ...
-
-  return <I18n locale={detectedLocale}>{children}</I18n>
-}
-```
-
 ## Adding Google Fonts:
 
 Connect fonts to `public/index.html`:
@@ -271,7 +286,7 @@ html {
 In case if you don't want to use Google Fonts:
 
 - Download fonts
-- Add fonts to the `src/shared/fonts/FontName/`
+- Add fonts to the (i.g. `/src/shared/fonts/OpenSans/...`).
 
 Then add `@font-face` in some `.scss` file (i.g. `/src/app/styles/font.scss`):
 
@@ -288,9 +303,9 @@ Then add `@font-face` in some `.scss` file (i.g. `/src/app/styles/font.scss`):
 }
 ```
 
-Paste your fonts to the: `/src/shared/fonts` (i.g. `/src/shared/fonts/OpenSans/...`).
+The last step is to copy these fonts into the `/dist` folder every time you build the project.
 
-Add copy files config in `/webpack/webpack.common.js`:
+Add another config for `CopyWebpackPlugin` to `/webpack/webpack.common.js`:
 
 ```js
 new CopyWebpackPlugin({
@@ -310,13 +325,3 @@ Change the font in `src/app/styles/body.scss`:
 html {
   font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol' !important;
 }
-```
-
-## License:
-
-[MIT](./LICENSE)
-
-Copyright (c) 2018-present, [Evgenii Vedegis](https://github.com/vedees)
-
-[buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
-[buymeacoffee]: https://www.buymeacoffee.com/vedegis
