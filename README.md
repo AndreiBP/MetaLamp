@@ -13,15 +13,16 @@
 ```bash
 # Download repository:
 git clone https://github.com/vedees/webpack-template webpack-template
+# Склонировал репозиторий и переделал под свой образец
 
 # Install dependencies:
-# npm install
+npm install
 
 # Server with hot reload at http://localhost:8084/
-# npm run start
+npm run start
 
 # Output will be at dist/ folder
-# npm run build
+npm run build
 ```
 
 ## Project Structure:
