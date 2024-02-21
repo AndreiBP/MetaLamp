@@ -1,3 +1,28 @@
 header
-  .container
-    span header
+    .header
+        .conteiner
+            .header__inner
+                a(href="#").header__logo(class='logo')
+                    img.logo__image(src='./shared/img/logotip/Logo.svg' alt='Logotip')
+                .header__nav
+                    nav.nav__menu
+                        ul.nav__menu-list
+                            li.nav__menu-item-1
+                                a(href="#").nav__menu-link О нас
+                            li.nav__menu-item-2
+                                a(href="#").nav__menu-link Услуги
+                            li.nav__menu-item-3
+                                a(href="#").nav__menu-link Вакансии
+                            li.nav__menu-item-4
+                                a(href="#").nav__menu-link Новости
+                            li.nav__menu-item-5
+                                a(href="#").nav__menu-link Соглашения
+                            li.nav__menu-item-6
+                                button.nav__button.button.button--login(type='button') ВОЙТИ
+                            li.nav__menu-item-7
+                                button.nav__button.button.button--registration(type='button') ЗАРЕГИСТРИРОВАТЬСЯ
+                .header__nav-btn
+                    button.nav-icon-btn
+                        .nav-icon
+
+block script

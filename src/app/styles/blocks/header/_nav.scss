@@ -1,0 +1,30 @@
+.nav__menu {
+    font-size: 14px;
+    font-family: $font-montserratRegular;
+}
+
+.nav__menu-list {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+
+}
+
+.button--login {
+    background-color: $white;
+    color: $linear;
+    border: 2px solid $linear; /* Цвет границы /* Стиль границы */
+    border-radius: 25px; /* радиус закругления*/
+    font-family: $font-montserratBold;
+    font-size: 14px;
+    padding: 6px 20px 6px 20px; /* 1 сверху, 2 справа, 3 снизу, 4 слева*/
+}
+
+.button--registration {
+    color: $white;
+    background: $linearGradient;
+    border-radius: 25px;
+    font-family: $font-montserratBold;
+    font-size: 14px;
+    padding: 8px 20px 8px 20px; /* 1 сверху, 2 справа, 3 снизу, 4 слева*/  
+   }

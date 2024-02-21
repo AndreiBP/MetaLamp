@@ -1,0 +1,21 @@
+body {
+    background-color: $white;
+}
+
+a {
+    color: $grey-light;
+    // transition: color 0.2s ease-in;
+
+    // &:hover {
+    //     color: $linear
+    // }
+}
+
+.conteiner {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.no-scroll {
+    overflow-y: hidden;
+}
