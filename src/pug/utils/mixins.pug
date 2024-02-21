@@ -1,4 +1,7 @@
-//- mixin item(title, descr)
-//-   .item
-//-     h2.item-title= title
-//-     p.item-descr= descr
+//- Mixin add picture
+
+mixin logo__image(name, ext)
+    img.src(src=`../src/shared/img/logotip/${name}.${ext}`, alt=name)
+
+mixin image-background(name, ext)
+    img.src(src=`../src/shared/img/background/${name}.${ext}`, alt=name)

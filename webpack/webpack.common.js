@@ -94,15 +94,6 @@ module.exports = {
               postcssOptions: {
                 plugins: [
                   [
-                    // add more postcss plugins here
-                    // ...
-                      // "liveSassCompile.setting.formats" [
-                      //   {
-                      //     "format": "expanded",
-                      //     "extensionName": ".css",
-                      //     "savePath": "/css/"
-                      //   }
-                      // ],
                     // https://www.npmjs.com/package/postcss-preset-env
                     // it's including autoprefixer by default (config is in `package.json`)
                     // pass `autoprefixer: false` to disable autoprefixer

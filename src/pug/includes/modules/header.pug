@@ -1,9 +1,10 @@
+include ../../utils/mixins
 header
     .header
         .conteiner
             .header__inner
                 a(href="#").header__logo(class='logo')
-                    img.logo__image(src='./shared/img/logotip/Logo.svg' alt='Logotip')
+                    +logo__image('logo', 'svg')
                 .header__nav
                     nav.nav__menu
                         ul.nav__menu-list
