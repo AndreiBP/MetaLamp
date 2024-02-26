@@ -1,5 +1,65 @@
 .footer {
     min-height: 443px; //мин высота footer
-    // padding-top: 15px;
+    padding-top: 80px;
     // padding-bottom: 15px;
 }
+
+.footer__inner {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 140px;
+    padding-right: 120px;
+    color: $grey-light;
+    
+}
+.footer__nav p {
+    padding-bottom: 15px;
+}
+.footer__nav__menu-list { 
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+.title { //надпись последней колонки где форма подписки
+    padding-top: 15px;
+    padding-bottom: 15px;
+    max-width: 260px;
+}
+
+.form { //форма ввода Email и кнопки
+    display: flex;
+    justify-content:space-between;
+    border: 2px solid $grey-light;
+  }
+  
+  .form__email { //где начинается ввод email
+    padding: 8px;
+  }
+  
+  .form__btn { //кнопка стрелочка
+    margin-right: 10px;
+    padding: 8px;
+    background: url(/src/shared/img/icon-btn.png) 50% 50% no-repeat;
+    background-size: contain;
+  }
+
+  .line {
+    padding-top: 70px;
+    border-bottom: 1px solid $grey-light; /* Параметры линии */
+  }
+  
+  .container__bottom {
+    display: flex;
+    justify-content:space-between;
+    // padding-left: 140px;
+  }
+
+  .container__bottom p {
+        font-size: 14px;
+        color: $grey-light;
+  }
+
+  .icon__grup {
+    
+  }
+  

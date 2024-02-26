@@ -70,6 +70,7 @@
   ],
   "dependencies": {
     "pug-linker": "^4.0.0",
-    "pug-plain-loader": "^1.1.0"
+    "pug-plain-loader": "^1.1.0",
+    "url-loader": "^4.1.1"
   }
 }

@@ -1,0 +1,26 @@
+.container {
+    position: relative;  
+}
+
+.search__modul {
+    position: absolute;
+    top: 70px;
+    left: 140px;
+    height: 374px;
+    width: 380px;
+    background: white;
+}
+
+.title__container {
+    position: absolute;
+    bottom: 10px;
+    right: 120px;
+    width: 297px;
+    height: 48px;
+}
+
+.background__title {
+    font-size: 18px;
+    color: $grey-light;
+    font-family: $font-montserratRegular;
+}

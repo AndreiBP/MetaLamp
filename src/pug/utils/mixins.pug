@@ -1,7 +1,18 @@
-//- Mixin add picture
-
+//- mixin add picture
 mixin logo__image(name, ext)
     img.src(src=`../src/shared/img/logotip/${name}.${ext}`, alt=name)
 
 mixin image-background(name, ext)
     img.src(src=`../src/shared/img/background/${name}.${ext}`, alt=name)
+
+mixin image__icon(name, ext)
+    img.src(src=`../src/shared/misc/${name}.${ext}`, alt=name)
+
+//- mixin header and footer
+mixin title(id, ...items)
+    ul(class=id)
+        each item in items
+            li
+                a(href='eeeee')= item
+
+//- 

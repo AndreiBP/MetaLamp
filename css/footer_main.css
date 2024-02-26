@@ -1,0 +1,19 @@
+.footer {
+  min-height: 443px;
+  padding-top: 80px;
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 140px;
+  padding-right: 120px;
+}
+
+.title p {
+  max-width: 260px;
+}
+
+.footer__logo {
+  margin-top: -10px;
+}/*# sourceMappingURL=footer_main.css.map */
