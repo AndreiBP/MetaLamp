@@ -1,0 +1,60 @@
+.search__container {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    // padding-bottom: 20px;
+}
+
+.main-title {
+    font-size: 24px;
+    font-family: $font-montserratBold;
+}
+
+.date__from {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container__inner p {
+    padding-top: 15px;
+    font-size: 15px;
+    font-family: $font-montserratBold;
+    padding-bottom: 8px;
+}
+.container__inner input {
+    border-radius: 5px;
+    border: 1px solid $grey-light;
+    height: 44px;
+    padding: 10px;
+}
+
+.input__arrival {
+    width: 150px;
+}
+.input__departure {
+    width: 150px;
+}
+.input__guests__number {
+    width: 100%;
+}
+
+input::placeholder {
+    font-size: 14px;
+}
+
+.guests {
+    padding-top: 15px;
+}
+
+.search__button {
+    padding-top: 25px;
+}
+.search--btn{
+    width: 100%;
+    height: 44px;
+    color: $white;
+    background: $linearGradient;
+    border-radius: 25px;
+    font-family: $font-montserratBold;
+    font-size: 14px;
+}

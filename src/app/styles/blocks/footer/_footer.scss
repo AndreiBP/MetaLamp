@@ -48,18 +48,17 @@
     border-bottom: 1px solid $grey-light; /* Параметры линии */
   }
   
-  .container__bottom {
+  .container__bottom { // нижний footer
     display: flex;
     justify-content:space-between;
-    // padding-left: 140px;
+    align-items: center;
+    height: 70px;
+    padding-left: 140px;
+    padding-right: 140px;
   }
 
   .container__bottom p {
         font-size: 14px;
         color: $grey-light;
-  }
-
-  .icon__grup {
-    
   }
   

@@ -1,1 +1,16 @@
 .search__container
+    p(class='main-title') Найдем номера под ваши пожелания
+    .container__inner
+        .date__from
+            .date__from__arrival
+                p(class='title-arrival') ПРИБЫТИЕ
+                input(class='input__arrival' type="text" placeholder ='ДД.ММ.ГГГГ')
+            .date__from__departure
+                p(class='title-departure') ВЫЕЗД
+                input(class='input__departure' type="text" placeholder ='ДД.ММ.ГГГГ')
+        .guests
+            p(class='title-guests') ГОСТИ
+            input(class='input__guests__number' type="text" placeholder ='Сколько гостей')
+        .search__button
+            button(class='search--btn') ПОДОБРАТЬ НОМЕР
+block script
